@@ -15,27 +15,31 @@ namespace EngineConsoleEx1_TS
 //-Horse Power must be a positive whole number between 3500 and 5500. HP is measured in 100 HP increments.
 
 //![Engine] (./ CP - 7002 - TStevens.jpg)
+
     public class Engine
-    {
-        private int HP; 
-        private string Model;
-        private string SerialNumber; 
-        private int Weight; 
-    }
-
-    public Engine (int, HP, string Model, string SerialNumber, int Weight)
         {
-
-
+            private int hp; 
+            private string model;
+            private string serialNumber; 
+            private int weight; 
         }
+
+    public Engine (int hp, string model, string serialNumber, int weight)
+        {
+            HP = hp;
+            Model = model;
+            SerialNumber = serialNumber; 
+            Weight = weight; 
+        }
+
     public int HP
         {
             get { return _HP; }
             private set
             {
-                if ( _HP => 0)
+                if ( _HP =< 0)
                 {
-                    throw new ArgumentOutOfRangeException("HP must be greather than 0..");
+                    throw new ArgumentOutOfRangeException("HP must be greater than 0..");
                 }
                 _HP = value;
             }
@@ -46,7 +50,7 @@ namespace EngineConsoleEx1_TS
             get { return _Model; }
             private set
             {
-                if (XXXXXX.IsEmpty(value))
+                if (Model.IsEmpty(value))
                 {
                     throw new ArgumentException("Model is required.");
                 }
@@ -59,7 +63,7 @@ namespace EngineConsoleEx1_TS
             get { return _SerialNumber; }
             private set
             {
-                if (XXXXXX.IsEmpty(value))
+                if (SerialNumber.IsEmpty(value))
                 {
                     throw new ArgumentException("SerialNumber is required.");
                 }
@@ -68,21 +72,22 @@ namespace EngineConsoleEx1_TS
         }
 
     public int Weight
-    {
+        {
             get { return _Weight; }
             private set
             {
-                if (.IsEmpty(value))
+                if (Weight.IsEmpty(value))
+                // and if not in increments of 100, ie %100 *******
                 {
                     throw new ArgumentOutOfRangeException("Weight must be greater than 0..")
                 }
                 _Weight = value;
+            }
         }
-    }
 
     public override string ToString()
-      {
+        {
            
-          return $"{},{},{}";
-      }
+          return $"{SerialNumber},{Model},{HP},{Weight}";
+        }
 }

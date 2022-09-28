@@ -10,8 +10,13 @@ namespace EngineConsoleEx1_TS
 
 //Railcars come in various types.Initially, we will consider only three types of railcars: box cars, coal cars, and covered hoppers.
 
-//![RailCarType] (./RailCarType-ClassDiagram.png)
-    internal class RailCarType
+    public enum RailCarType
     {
+       
+        Box Cars,
+        Coal Cars,
+        Covered Hoppers,
+        
     }
+    
 }

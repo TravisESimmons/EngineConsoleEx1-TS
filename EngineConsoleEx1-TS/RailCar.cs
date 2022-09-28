@@ -24,13 +24,11 @@ namespace EngineConsoleEx1_TS
 
 //- ** Type** - Value that represents the type of this car.
 //- **InService** - Value that represents the activity status of this car.
-//![RailCar] (./Hopper.jpg)
+
 
 //Railcars can be loaded with freight. When loaded, each car is weighed at a scale that gives the weight to the nearest 100 pounds. The **Gross Weight** is the weight of the freight and the railcar. The **Net Weight** is the weight of the freight only. Any weight within 90% of the **Capacity** is considered as a "full load". 
 
 //All fields must be stored as read-only information (it cannot be modified). Use private fields and properties with private sets.InService can be altered via the property.You will need a greedy constructor for this class.Create an overloaded.ToString() method for the class to display all the instance values in a comma separated value string.
-
-//![RailCar] (./RailCar-ClassDiagram.png)
 
 //Note the following:
 
@@ -39,9 +37,55 @@ namespace EngineConsoleEx1_TS
 //- When recording scale weights, the** gross weight** is given; this is the actual weight of the RailCar with its load.This value must be between the Light Weight and the *gross* Load Limit (`LoadLimit + LightWeight`). Anything outside of these values should throw an exception. If the gross weight supplied is less than the Light Weight, then your error message should begin with the phrase "Scale Error -". If the weight is over the safe limit (`LoadLimit + LightWeight`), the error message should begin with "Unsafe Load -".
 
 //> "For safety, a rail car should be loaded so that Gross Weight is less than the sum of its stenciled Load Limit + Light Weight."
-//> 
-//> [Source: Boulder Creek Engineering](https://www.bouldercreekengineering.com/scale_ops3.php)
-    internal class RailCar
+
+    public class RailCar
     {
+    private string Serialnumber;
+    private int Capacity;
+    private int GrossWeight;
+    private bool InService; 
+    private bool IsFull; 
+    private int LightWeight; 
+    private int LoadLimit;
+    private int NetWeight; 
+   
     }
+
+    public RailCar (string serialNumber, int lightWeight, int capacity, int loadLimit, RailCarType type, bool inService)
+    {
+
+
+    }
+
+    public void RecordScaleWeight(int lightweight, int capacity, int loadlimit);
+    {
+
+
+    }
+
+    public int Capacity
+    {
+        get { }
+    }
+
+    public int GrossWeight
+    {
+        get { }
+    }
+
+    public int InService
+    {
+        get { }
+    }
+
+    public int IsFull
+    {
+        get { }
+    }
+
+    public override string ToString()
+      {
+           
+          return $"{serialNumber},{lightWeight},{capacity},{loadLimit},{type},{inService}";
+      }
 }

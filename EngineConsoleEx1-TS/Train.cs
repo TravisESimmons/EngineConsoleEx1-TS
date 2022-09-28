@@ -15,12 +15,44 @@ namespace EngineConsoleEx1_TS
 //- ** Gross Weight** - This is the total weight of the train, including the engine.
 //- **Maximum Gross Weight** - This is based upon the capacity of the engine.The "rule-of-thumb" that we will be following is that 1 HP can pull 1 Ton (a Ton is 2000 pounds). Thus, a 4400 HP engine can pull about 4400 Tons.
 
-//![Train] (./Train-ClassDiagram.png)
-
 //Note the following:
 
 //- When adding railcars to the train, do not allow the gross weight to exceed the maximum gross weight allowed for the train.
-    internal class Train
+    public class Train
     {
+        private int GrossWeight;
+        private int MaxGrossWeight; 
+        private int TotalCars; 
+    }
+
+    public void AddRailCar(RailCar Car)
+    {
+        RailCars.Add(RailCar); 
+    }
+
+    public List<RailCar> RailCars { get; set; }
+    {
+    get 
+        private set
+    }
+
+
+    public Train (Engine engine)
+    {
+
+    }
+
+    public int MaxGrossWeight
+    {
+            get { return _GrossWeight; }
+            private set
+            {
+                if ( _GrossWeight > _MaxGrossWeight ) 
+                
+                {
+                    throw new ArgumentNullException("Error: The Gross Weight cannot exceed the Maximun Gross Weight.")
+                }
+                _GrossWeight = value;
+        }
     }
 }
