@@ -6,17 +6,19 @@ using System.Threading;
 using System.Threading.Tasks;
 
 namespace EngineConsoleEx1_TS
-//{ ### The `RailCarType`
+{
+    //{ ### The `RailCarType`
 
-//Railcars come in various types.Initially, we will consider only three types of railcars: box cars, coal cars, and covered hoppers.
+    //Railcars come in various types.Initially, we will consider only three types of railcars: box cars, coal cars, and covered hoppers.
 
     public enum RailCarType
     {
-       
-        Box Cars,
-        Coal Cars,
-        Covered Hoppers,
-        
+
+        Box_Cars,
+        Coal_Cars,
+        Covered_Hoppers,
+
     }
-    
+
+
 }
