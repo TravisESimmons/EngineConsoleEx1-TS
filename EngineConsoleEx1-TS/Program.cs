@@ -1,105 +1,89 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using EngineConsoleEx1_TS;
+using System;
+using System.Reflection;
+
 
 static void DisplayString(string text)
 {
     Console.WriteLine(text);
 }
 
-static void DisplayPerson(Person person)
+
+static void RailCarTest()
 {
-    DisplayString($"{person.FirstName} {person.LastName}");
-    DisplayString(person.Address.ToString());
-    foreach (var emp in person.EmploymentPositions)
-        DisplayString(emp.ToString()); 
+    //RailCar railCar = new RailCar("18172", 38800, 130000, 130200, RailCarType.Coal_Cars, true);
+    //railCar.RecordScaleWeight(164900);
+    //DisplayString(railCar.ToString());
+
+    //railCar = new RailCar("18172", 38800, 130000, 130200, RailCarType.Coal_Cars, true);
+    //railCar.RecordScaleWeight(144900);
+    //DisplayString(railCar.ToString());
+
+    //railCar = new RailCar("18172", 38800, 130000, 130200, RailCarType.Coal_Cars, true);
+    // railCar.RecordScaleWeight(14490);
+    //DisplayString(railCar.ToString());
+
+    //railCar = new RailCar("18172", 38800, 130000, 130200, RailCarType.Coal_Cars, true);
+    //railCar.RecordScaleWeight(194490);
+    //DisplayString(railCar.ToString());
+
 }
 
-Employment Job = CreateJob();
-ResidentAddress Address = CreateAddress();
-
-// Create a Person 
-Person me = CreatePerson(Job, Address);
-    if (me != null)
-    DisplayPerson(me);
-
-Person CreatePerson(Employment job, ResidentAddress address)
+static void EngineTest()
 {
-    Person thePerson = null;
-    List<Employment> jobs = new List<Employment>();
-    try
-    {
-      
-        jobs.Add(new Employment("Worker", SupervisoryLevel.TeamMember, 2.1));
-        jobs.Add(new Employment("Leader", SupervisoryLevel.TeamLeader, 7.1));
-        jobs.Add(job);
-        thePerson = new Person("James Multi Job", "Thompson", jobs, address);
+    //EXPECTED
+    //Engine engine = new Engine("CP 8002", "48807", 147700, 4400);
+    //DisplayString(engine.ToString());
 
-        
-        thePerson.ChangeName("Jimmy", "DeckOfCards");
+    //MODEL
+    //Engine engine = new Engine("", "48807", 147700, 4400);
+    //DisplayString(engine.ToString());
 
-        thePerson.AddEmployment(new Employment("Head IT", SupervisoryLevel.DepartmentHead, 100000000));
+    //SERIALNUMBER
+    //Engine engine = new Engine("CP 8002", "", 147700, 4400);
+    //DisplayString(engine.ToString());
 
-        //Exception Testing
-        // No first name 
-        // thePerson = new Person(null, "Thompson", jobs, address); 
+    //WEIGHT
+    //Engine engine = new Engine("CP 8002", "44807", -147770, 4400);
+    //DisplayString(engine.ToString());
 
-        // No last name 
-        // thePerson = new Person(null, "James", jobs, address); 
+    //WEIGHT INCREMENTS
+    //Engine engine = new Engine("CP 8002", "44807", 147770, 4400);
+    //DisplayString(engine.ToString());
 
-        ResidentAddress oldAddress = thePerson.Address;
-        oldAddress.City = "Vancouver";
-        thePerson.Address = oldAddress;
-    }
-    catch (ArgumentException ex) // Specifies exception message
-    {
-        DisplayString(ex.Message);
-    }
-    catch (Exception ex) // General Catch All
-    {
-        DisplayString("Runtime error:  " + ex.Message);
-    }
+    //HP 
+    //Engine engine = new Engine("CP 8002", "44807", 147700, -4400);
+    //DisplayString(engine.ToString());
 
-    return thePerson;
+    //HP 
+    //Engine engine = new Engine("CP 8002", "44807", 147700, 4440);
+    //DisplayString(engine.ToString());
 }
 
-Employment CreateJob()
+static void TrainTest()
 {
+    Engine engine = new Engine("CP 8002", "48807", 147700, 4400);
+   
+    RailCar railCar = new RailCar("18172", 38800, 130000, 130200, RailCarType.Coal_Cars, true);
+    railCar.RecordScaleWeight(164500);
 
+    Train train = new Train(engine);
+    train.AddRailCar(railCar);
+    DisplayString($"{train.TotalCars},{train.GrossWeight},{train.MaxGrossWeight}");
 
-    Employment job = null;
-    try
-    {
-        job = new Employment();
-        DisplayString($"Good Job {job.ToString()}");
+    // INCOMPLETE TEST. COULDNT GET TEST DATA " OVER GROSS WEIGHT " EXCEPTION TO THROW. BECAUSE ENGINE HP EXCEPTION THROWS FIRST. 
 
+    // engine = new Engine("CP 8002", "48807", 4400, 3600);
+    // railCar = new RailCar("18172", 75000, 130000, 400000, RailCarType.Coal_Cars, true);
+    // railCar.RecordScaleWeight(450000);
 
-        // checking exceptions
-        job = new Employment("Boss", SupervisoryLevel.Supervisor, 5.5);
-        DisplayString($"Greed Good Job {job.ToString()}");
-
-        // Bad Data
-        // job = new Employment("", SupervisoryLevel.Supervisor, 5.5); // Empty
-        // job = new Employment("Boss", 10, 5.5); INVALID SUPERVISORY LEVEL 
-        // job = new Employment("Boss", SupervisoryLevel.Supervisor, -5.5); // Negative Year
-    }
-    catch (ArgumentException ex) // Specifies exception message
-    {
-        DisplayString(ex.Message);
-    }
-    catch (Exception ex) // General Catch All
-    {
-        DisplayString("Runtime error:  " + ex.Message);
-    }
-    
-    return job;
+    // train = new Train(engine);
+    // train.AddRailCar(railCar);
+    // DisplayString($"{train.TotalCars},{train.GrossWeight},{train.MaxGrossWeight}");
 }
 
-ResidentAddress CreateAddress()
-{
-    ResidentAddress address = new ResidentAddress();
-    DisplayString($"Default Address {address.ToString()}");
-    address = new ResidentAddress(10767, "106 St Nw", null, null, "Edmonton", "AB");
-    DisplayString($"Greedy Address {address.ToString()}");
 
-    return address;
-}
+RailCarTest();
+EngineTest();
+TrainTest();
